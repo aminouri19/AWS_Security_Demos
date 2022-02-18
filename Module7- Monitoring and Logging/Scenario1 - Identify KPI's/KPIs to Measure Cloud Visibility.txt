@@ -1,0 +1,14 @@
+KPIs to Measure Cloud Visibility
+
+1- Percent of environment with proper tagging in place (%)
+2- Percent of total bill charged back (%)
+3- Variance of budget vs. actual by application or team (%) 
+4- Forecast accuracy (%)
+5- Security incident per month by team (n)
+6- Security vulnerabilities identified per month per team (n)
+7- Mean time for vulnerability announced to all systems patched (n)
+
+Best Practices for improving cloud visibility
+https://www.cloudhealthtech.com/blog/cloud-visibility-best-practices
+
+Ref: https://www.cloudhealthtech.com/blog/cloud-kpis-you-need-measure-success

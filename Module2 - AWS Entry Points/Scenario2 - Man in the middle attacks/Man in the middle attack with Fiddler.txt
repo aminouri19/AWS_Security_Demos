@@ -1,0 +1,40 @@
+Man in the middle attacks with Fiddler
+
+1- Install web proxy fiddler and start 
+capturing traffic
+
+2- Run the following command
+*	aws s3 ls
+
+An error message will pop up showing that 
+Certificate verification failed. 
+This happens because fiddler is intercepting
+traffic as a proxy server and ssl requests 
+believe this is not secure.
+
+3- Run the command again without SSL verification
+*	aws s3 ls --no-verify-ssl
+
+Although a warning message pops up, but the
+command will go through. This proves SSL 
+verification is important against man in the
+middle attacks
+
+4- Select the Composer tab in Fiddler. 
+Copy the http request and paste it in the 
+box. This clearly shows we are hashing our 
+request and also using our Access Key for 
+Authn and Authz. The signature shows the 
+hash value of the request.
+
+5- Click on execute and we can see that the
+request will be replayed. Replaying the 
+request is possible for 5 minutes.
+
+6- To prove we can't tamper the request, 
+change the region and replay the request. 
+You should recieve a 400 error message 
+meanining the server will not process this 
+request. Proving we can't tamper the request.
+
+

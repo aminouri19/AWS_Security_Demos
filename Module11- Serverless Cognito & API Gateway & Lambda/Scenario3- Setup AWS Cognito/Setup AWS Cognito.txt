@@ -1,0 +1,22 @@
+Setup AWS Cognito
+
+1- Open Amazon Cognito and click Manage User Pools
+2- Click, create a user pool
+3- Provide a user pool name and click "Review Defaults"
+4- Scroll to the bottom and click create pool.
+5- On the left menu, click "App Clients"
+6- Click "Add and app client" and provide a name
+7- Click Create App client
+8- Click "App Client Settings" from the left
+9- Select Cognito user pool
+10- Place the API gateway url in the Call back and sign out URL boxes
+11- Under Oath2.0 seelct all options but "Client Credentials" and click Save changes
+12- In the bottom click "Choose a domain"
+13- Specify a domain name and check availability.
+14- If domain is available click save changes
+15- Select app client settings from left again
+16- Scroll to the bottom and click "Launch hosted UI"
+17- Sign up for an account and then login
+18- After a successful login the API gateway URL will open.
+
+

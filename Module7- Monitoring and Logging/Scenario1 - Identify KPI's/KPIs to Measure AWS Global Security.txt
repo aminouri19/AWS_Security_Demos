@@ -1,0 +1,10 @@
+AWS Global Security KPI's
+
+1- Number of public S3 buckets / total of S3 buckets
+2- Number of ununcrypted EBS volumes / total of EBS volumes
+3- Number of ununcrypted S3 buckets / total of S3 buckets
+4- Total number of expired access keys
+5- Percent of policies in compliant state (%)
+6- Time to remediate security violations (time)
+7- Service availability (%)
+8- Time to deployment (time)

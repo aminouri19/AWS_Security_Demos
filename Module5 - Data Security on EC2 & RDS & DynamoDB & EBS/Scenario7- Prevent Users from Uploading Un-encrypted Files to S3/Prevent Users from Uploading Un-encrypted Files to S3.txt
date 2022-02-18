@@ -1,0 +1,39 @@
+Prevent Users from Uploading Un-encrypted Files to S3
+
+To make this happen we must an S3 policy on the bucket that will
+only allow encrypted objects to be uploded to S3.
+
+To encrypt all objects set default encryption on bucket. Use SSE on S3.
+
+{
+     "Version": "2012-10-17",
+     "Id": "PutObjPolicy",
+     "Statement": [
+           {
+                "Sid": "DenyIncorrectEncryptionHeader",
+                "Effect": "Deny",
+                "Principal": "*",
+                "Action": "s3:PutObject",
+                "Resource": "arn:aws:s3:::<bucket name>/*",
+                "Condition": {
+                        "StringNotEquals": {
+                               "s3:x-amz-server-side-encryption": "AES256"
+                         }
+                }
+           },
+           {
+                "Sid": "DenyUnEncryptedObjectUploads",
+                "Effect": "Deny",
+                "Principal": "*",
+                "Action": "s3:PutObject",
+                "Resource": "arn:aws:s3:::<bucket name>/*",
+                "Condition": {
+                        "Null": {
+                               "s3:x-amz-server-side-encryption": true
+                        }
+               }
+           }
+     ]
+ }
+
+ref: https://aws.amazon.com/blogs/security/how-to-prevent-uploads-of-unencrypted-objects-to-amazon-s3/

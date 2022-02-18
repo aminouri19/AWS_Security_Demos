@@ -1,0 +1,1 @@
+https://www.splunk.com/en_us/blog/tips-and-tricks/how-to-easily-stream-aws-cloudwatch-logs-to-splunk.html

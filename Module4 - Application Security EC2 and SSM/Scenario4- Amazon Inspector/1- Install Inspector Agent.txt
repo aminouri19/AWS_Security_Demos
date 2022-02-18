@@ -1,0 +1,14 @@
+Install the inspector Agent
+
+1- Open the AWS Systems Manager console
+2- In the navigation pane under Instances & nodes, choose Run Command.
+3- Choose Run a command.
+4- For Command document, choose the document named "AmazonInspector-ManageAWSAgent". 
+5- For Targets, you can select EC2 instances using different methods.
+6- Choose Run.
+
+Note:
+For amazon Inspector to run, you have to create a role. You don't need to manually 
+create the AWSServiceRoleForAmazonInspector service-linked role.
+The AWSServiceRoleForAmazonInspector service-linked role is created automatically 
+when you enable Inspector in the region.

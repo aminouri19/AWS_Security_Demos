@@ -1,0 +1,13 @@
+Create a hello world lamda function
+
+1- Open Lambda page
+2- Click Create function
+3- Select Author from scratch
+4- Type a name and keep runtime as node.js
+5- Hit craete function
+6- Scroll down to code source and we can see the "hello from lambda" message
+7- Click on "test" above the code, provide an event name and hit create
+8- Scroll up and select the "Test" tab
+9- Select your event and click test
+10- if a green message appears, this means the test has been successful. 
+11- Click details to see if the message is visible

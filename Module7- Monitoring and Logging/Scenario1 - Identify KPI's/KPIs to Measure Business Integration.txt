@@ -1,0 +1,12 @@
+KPIs to Measure Business Integration
+
+1- Cost per customer ($)
+2- Cloud spend as a percentage of revenue (%)
+3- Reduction in Cost of Goods Sold (COGS) over time (%)
+4- Cost of revenue over time ($)
+5- Time to bring new services to market (time) 
+6- Compliance issues open (n)
+7- Mean time to detect (time) 
+8- Customer satisfaction (typically using Net Promoter Score)
+
+ref: https://www.cloudhealthtech.com/blog/cloud-kpis-you-need-measure-success

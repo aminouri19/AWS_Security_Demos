@@ -1,0 +1,52 @@
+Using AWS Organization we can centrally govern our environment.
+
+We can use AWS Organizations for the following:
+
+1- Manage Billing
+2- Manage Access Control
+3- Compliance
+4- Security
+
+We can enforce tags using SCP's (Service Control Policies).
+To validate tag values we can use AWS Organizations tag policies.
+
+
+Important tags:
+1- "Owner": when users create resources either manually or programatically, we can configure
+policies that allow users to only view and access resources they own using this tag.
+
+2- "Type": This tag will assist when searching, filtering and securing specific resource types. 
+
+3- "Cost Center": This tag will assist with billing and finding where the cost of this resource should be applied to.
+
+4- "Region": This tag will assist in finding resources in specific regions
+
+5- "Project": This tag will allow us to find all resources that belong to a project.
+It also helps us understand the costs related to this project.
+
+6- "Department": This tag will show the resources used in a specific department.
+
+
+Ref: https://aws.amazon.com/blogs/aws-cost-management/cost-allocation-blog-series-3-enforce-and-validate-aws-resource-tags/
+
+Appendix:
+The following policy will help enforce a project tag on all new resources created using cloudformation.
+
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "Statement1",
+      "Effect": "Deny",
+      "Action": [
+        "cloudformation:CreateStack"
+      ],
+      "Resource": "*",
+      "Condition": {
+        "Null": {
+          "aws:RequestTag/Project": "true"
+        }
+      }
+    }
+  ]
+}

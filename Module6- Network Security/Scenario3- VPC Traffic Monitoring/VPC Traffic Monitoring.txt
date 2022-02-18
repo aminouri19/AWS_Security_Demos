@@ -1,0 +1,12 @@
+VPC Traffic Monitoring
+
+In this scenario we will capture traffic that has been sent from one instance to another.
+It appears that one instance wants to ping another instance but it's blocked. We will detect
+why it's blocked and resolve the issue. We will also use filters to direct/view only desired
+traffic.
+
+1- 
+
+2- 
+
+

@@ -1,0 +1,13 @@
+KMS Key Rotation
+
+1- To automatically rotate your CMK annually, open KMS, click on your key, 
+click the "Key Rotation" tab, select the "Automatically rotate this KMS key every year" option.
+
+2- To rotate your CMK manually first run the command below to view your key ID and alias
+*	aws kms list-aliases --key-id <key id>
+3- Create a new key
+*	aws kms create-key
+4- Point the current alias to the new Key-ID
+*	aws kms update-alias --alias-name "alias/Oregon-CMK" --target-key-id <New Key ID>
+5- Verify the change
+*	aws kms list-aliases --key-id <new key id>

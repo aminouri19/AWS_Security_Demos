@@ -1,0 +1,44 @@
+Usefule AWS Config rules
+
+1- Check for ssh security port open to all
+*	restricted-ssh
+
+2- Check for accounts that haven't rotated keys for a long time
+*	access-keys-rotated
+
+3- Check whether logging is enabled for s3 buckets
+*	s3-bucket-logging-enabled
+
+4- Checks if AWS Certificate Manager Certificates in your account are marked for expiration within the specified number of days.
+*	cm-certificate-expiration-check
+
+5- Checks if Web Application Firewall (WAF) is enabled on Application Load Balancers (ALBs).
+*	alb-waf-enabled
+
+6- Checks if an Amazon API Gateway API stage is using an AWS WAF Web ACL. 
+*	api-gw-associated-with-waf
+
+7- Checks that all methods in Amazon API Gateway stage has logging enabled.
+*	api-gw-execution-logging-enabled
+
+8- Check that Amazon Elastic Block Store (EBS) encryption is enabled by default.
+*	ec2-ebs-encryption-by-default
+
+9- Checks whether the Amazon EC2 instances in your account are managed by AWS Systems Manager.
+*	ec2-instance-managed-by-systems-manager
+
+10- Checks that none of the specified applications are installed on the instance.
+*	ec2-managedinstance-applications-blacklisted
+
+11- Checks if there are instances stopped for more than the allowed number of days. 
+*	ec2-stopped-instance
+
+12- Checks if running instances are using specified AMIs
+*	approved-amis-by-id
+
+13- Checks if running instances are using specified AMIs.
+*	approved-amis-by-tag
+
+
+
+Ref: https://docs.aws.amazon.com/config/latest/developerguide/api-gw-execution-logging-enabled.html

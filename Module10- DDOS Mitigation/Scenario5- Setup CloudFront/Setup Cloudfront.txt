@@ -1,0 +1,5 @@
+Setup Cloudfront	
+
+1- Create S3 bucket with static web files uploaded
+2- Create Cloudfront with S3 as origin
+3- 

@@ -1,0 +1,15 @@
+Create AWS WAF ACL
+
+1- Open AWS WAF
+2- Click "Create Web ACL"
+3- Specify a name and under "Resource Type" and "Cloudwatch metric name", select Regional Resources
+4- Under "Associated AWS Resources", select your API Gateway
+5- Hit Next and click "Add Rules"
+6- Click "Add my own rules and rule groups"
+7- Under Rule type select "Rule Builder"
+8- Give it a name like "WebAccess" 
+9- Under "Statement" select "Originated from a country" and select the "US" as source IP
+10- Under action select "Block" and hit "Add Rule"
+11- Under "Default Web ACL action .." click Block
+12- Hit next and create web ACL.
+

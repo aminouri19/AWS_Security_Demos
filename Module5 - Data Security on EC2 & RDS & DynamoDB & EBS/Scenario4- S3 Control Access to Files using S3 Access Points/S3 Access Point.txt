@@ -1,0 +1,83 @@
+S3 Access Point
+
+1- Create an s3 bucket
+aws s3 mb s3://report-am-15 --region us-west-2
+
+2- Open S3 console and create a folder and call it amin
+
+3- Open S3 console and create a folder and call it josh
+
+4- upload files to both folders
+
+5- Click the "Access Points" tab
+
+6- Create an access point and call it "amin-ap"
+*	access point name: amin-ap
+*	Network origin: Internet
+
+7- Create an access point and call it "josh-ap"
+*	access point name: josh-ap
+*	Network origin: Internet
+
+8- click on amin-ap, click permissions and click edit under "Access Point Policy"
+
+9- Paste the following policy that only allows access to amin's folder
+*	Copy user arn and paste in the "Principal" section
+*	Copy access point arn and paste under "Resource" section
+*	Place folder name in front of "s3:prefix"
+
+{
+    "Version": "2012-10-17",
+    "Id": "Policy1627504368811",
+    "Statement": [
+        {
+            "Sid": "AminFolderAccessOnly",
+            "Effect": "Deny",
+            "Principal": {
+                "AWS": "arn:aws:iam::511349353831:user/amin"
+            },
+            "Action": "s3:*",
+            "Resource": "arn:aws:s3:us-west-2:511349353831:accesspoint/amin-ap",
+            "Condition": {
+                "StringNotLike": {
+                    "s3:prefix": "amin/"
+                }
+            }
+        }
+    ]
+}
+
+10- click on josh-ap, click permissions and click edit under "Access Point Policy"
+
+11- Paste the following policy that only allows access to josh's folder
+*	Copy user arn and paste in the "Principal" section
+*	Copy access point arn and paste under "Resource" section
+*	Place folder name in front of "s3:prefix"
+
+{
+    "Version": "2012-10-17",
+    "Id": "Policy1627504368811",
+    "Statement": [
+        {
+            "Sid": "JoshFolderAccessOnly",
+            "Effect": "Deny",
+            "Principal": {
+                "AWS": "arn:aws:iam::511349353831:user/Josh"
+            },
+            "Action": "s3:*",
+            "Resource": "arn:aws:s3:us-west-2:511349353831:accesspoint/josh-ap",
+            "Condition": {
+                "StringNotLike": {
+                    "s3:prefix": "josh/"
+                }
+            }
+        }
+    ]
+}
+
+12- Open the properties tab for Josh's access point, copy access point alias and use it below
+*	aws s3 ls josh-ap-xhfg5rtdj6kno7eix66xyrui3jd86usw2a-s3alias
+*	aws s3 ls josh-ap-xhfg5rtdj6kno7eix66xyrui3jd86usw2a-s3alias/josh
+*	aws s3 ls josh-ap-xhfg5rtdj6kno7eix66xyrui3jd86usw2a-s3alias/josh/
+
+Only the last command will work because the policy only allows access to files inside the josh folder

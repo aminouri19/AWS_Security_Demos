@@ -1,0 +1,79 @@
+Create Cross Account Access Roles
+
+
+Step1: Create Role to Allow Cross Account 
+Access to Destination Account
+
+1- Click Create Role
+
+2- Select Another AWS Account
+
+3- Specify Account ID
+
+4- Optional: Select "Require External ID" 
+for increased security. Recommended if you 
+don't own the external account.
+If this option is selected, the external 
+entity cannot use the switch role feature. 
+They can only use the CLI or API access.
+
+5- Select role
+
+6- Provide Role name and create role.
+
+
+When an administrator creates a role for 
+cross-account access they establish trust 
+between the account that owns the role and 
+the resources (trusting account) and the 
+account that contains the users 
+(trusted account).
+To do this, the administrator of the trusting 
+account specifies the trusted account number
+as the Principal in the role's trust policy. That allows potentially any user in the trusted account to assume the role.
+To complete the configuration, the administrator
+of the trusted account must give specific 
+groups or users in that account permission 
+to switch to the role.
+
+To grant a user permission to switch to a role,
+the administrator of the trusted account 
+creates a new policy for the user. Or the 
+administrator might edit an existing policy
+to add the required elements.
+The administrator can then send the users a
+link that takes the user to the Switch Role
+page with all the details already filled in.
+Alternatively, the administrator can provide
+the user with the account ID number or 
+account alias that contains the role and the
+role name. The user then goes to the Switch
+Role page and adds the details manually. 
+
+Note that you can switch roles only when you
+sign in as an IAM user. You cannot switch 
+roles when you sign in as the AWS account 
+root user.
+
+
+
+Step2: Allow Users in Destination Account, Access to Resources in Source Account
+
+1- The administrator of the trusted account creates a new policy that allows it's users to assume and switch to a role. Replace Account ID and Role in the following
+
+{
+  "Version": "2012-10-17",
+  "Statement": {
+    "Effect": "Allow",
+    "Action": "sts:AssumeRole",
+    "Resource": "arn:aws:iam::ACCOUNT-ID-WITHOUT-HYPHENS:role/<Role Name>"
+  }
+}
+
+2- Create a user role and use this policy to allow switch role function
+
+3- Copy the role link after the role has been created and to users to switch role.
+
+
+Ref: https://www.youtube.com/watch?v=20tr9gUY4i0
+Ref: https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_permissions-to-switch.html

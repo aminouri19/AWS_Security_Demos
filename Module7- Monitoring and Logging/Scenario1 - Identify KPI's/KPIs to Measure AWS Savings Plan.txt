@@ -1,0 +1,35 @@
+1- Savings
+Not surprisingly, Savings was reported as the number one indicator of success with
+Savings Plans. After all, it makes sense that savings would be a good way to measure
+how well you’re doing with a plan designed to save you money!
+
+2- Coverage
+Not far behind Savings was Coverage. Many businesses are measuring how much of their 
+compute spending is covered by Savings Plans; the more coverage the better because 
+that means you’re spending less money for the same compute power.  
+We typically recommend that our customers aim for at least 70% of their compute usage 
+to be covered by reservation discounts (Savings Plans and/or Reserved Instances).
+
+3- Utilization
+About a third of the customers who responded told us that Utilization is a key performance 
+indicator for them. This also makes sense, as Savings Plans are a “use-it-or-lose-it” 
+kind of deal. Let me explain: let’s say you commit to spending $10 per hour on compute 
+services, but you only spend $8 in any given hour. The unused $2 is lost – it doesn’t 
+accumulate for usage in the next hour. So, it’s important to make sure you’re utilizing 
+as close to 100% of your Savings Plan purchases as possible. 
+
+4- Waste
+On the flip side of Utilization is Waste. In the example above, the unused $2 is 
+considered waste. Just as you want to maximize utilization, you want to minimize 
+wasted spending. So, measuring waste is another great way to see how you’re doing 
+with Savings Plans.
+
+5- Dollars Spent on Compute
+The fifth most important KPI reported was Dollars Spent on Compute. Businesses want 
+to reduce the amount of money they spend per unit of compute power, and Savings Plans 
+help you accomplish this. So, seeing a trend toward cheaper compute power—or 
+consistently cheap compute power—is another indicator that you’re succeeding with 
+Savings Plans. This metric is akin to Coverage, as the more you are covered by SPs 
+and RIs, the cheaper your cost will be per unit of compute.  
+
+ref: https://www.cloudhealthtech.com/blog/cloud-kpis-you-need-measure-success

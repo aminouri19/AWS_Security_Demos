@@ -1,0 +1,20 @@
+Scenario3- Import Key in KMS
+
+1- Run this command to generate a 256-bit symmetric key:
+*	openssl rand -out PlaintextKeyMaterial.bin 32
+2- Create a new external key in AWS and download the wrapped key material. Use the information in the following command
+3- To describe the key and get the parameters for the import run the following commands
+*	export KEY=`aws kms --region us-west-2 get-parameters-for-import --key-id <Example ID> --wrapping-algorithm RSAES_OAEP_SHA_256 --wrapping-key-spec RSA_2048 --query '{Key:PublicKey,Token:ImportToken}' --output text`
+4- Run these commands to place the public key and import token into separate base64-encoded files:
+*	echo $KEY | awk '{print $1}' > PublicKey.b64
+*	echo $KEY | awk '{print $2}' > ImportToken.b64
+5- Run these commands to convert the base64-encoded file into binary files for import
+*	openssl enc -d -base64 -A -in PublicKey.b64 -out PublicKey.bin
+*	openssl enc -d -base64 -A -in ImportToken.b64 -out ImportToken.bin
+6-  Run these commands to encrypt the key material with the public key that was converted to a binary file
+*	openssl pkeyutl -in PlaintextKeyMaterial.bin -out EncryptedKeyMaterial.bin -inkey PublicKey.bin -keyform DER -pubin -encrypt -pkeyopt rsa_padding_mode:oaep -pkeyopt rsa_oaep_md:sha256
+7- Run these commands to import the encrypted key material in AWS KMS
+*	aws kms --region us-west-2 import-key-material --key-id <Key ID> --encrypted-key-material fileb://EncryptedKeyMaterial.bin --import-token fileb://ImportToken.bin --expiration-model KEY_MATERIAL_DOES_NOT_EXPIRE
+8- Verify that the imported key status is set to Enabled by reviewing the key in the IAM console, or by running the DescribeKey API action.
+
+Ref: https://aws.amazon.com/premiumsupport/knowledge-center/import-keys-kms/

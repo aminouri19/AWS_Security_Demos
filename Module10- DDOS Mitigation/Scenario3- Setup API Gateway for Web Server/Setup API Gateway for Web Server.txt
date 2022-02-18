@@ -1,0 +1,15 @@
+Setup API Gateway for Web Server
+
+1- Open Amazon API Gateway
+2- Select Rest API
+3- Choose REST protocol and create new API
+4- Provide API name and select "Regional" for endpoint type
+5- Hit Create API
+6- In the Actions menu click "Create Method"
+7- Select Get and click on the checkmark
+8- Select "HTTP" integartion type
+9- Paste the DNS name to your website in the endpoint URl section
+10- Hit Save
+11- While "Get" is selcted click actions and select deploy API
+12- Create a new deployment stage called "Test"
+13- Open the URL under Invoke URL

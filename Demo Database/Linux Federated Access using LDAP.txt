@@ -1,0 +1,2 @@
+https://www.techrepublic.com/article/how-to-authenticate-a-linux-client-with-ldap-server/
+https://d0.awsstatic.com/whitepapers/aws-whitepaper-single-sign-on-integrating-aws-open-ldap-and-shibboleth.pdf

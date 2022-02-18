@@ -1,0 +1,8 @@
+DNS Route 53 Setup
+
+1- Create a Private hosted zone named test.com in the default vpc
+2- Create an EC2 instance running as a web server
+3- Create an A record pointing to the EC2 Web serever private IP address
+4- Create a CNAME record pointing to the DNS address
+5- Create a Linux and Windows instance and see if you can open the web server locally
+6- make sure the http port is open to everyone.

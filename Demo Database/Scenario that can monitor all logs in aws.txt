@@ -1,0 +1,1 @@
+https://aws.amazon.com/blogs/apn/how-to-collect-monitor-and-process-logs-and-metrics-at-scale-with-cognitive-insights/

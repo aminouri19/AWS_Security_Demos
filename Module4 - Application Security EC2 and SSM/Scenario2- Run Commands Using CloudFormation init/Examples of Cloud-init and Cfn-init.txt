@@ -1,0 +1,23 @@
+Cloudformation init or Cfn-init is used in a cloudformation template to add metada data.
+For example if you want to install an instance and create a file in the instance or install
+a software package afterwards you can use Cfn-init. The following template will install an 
+EC2 instance and also add a file to a specific path afterwards.
+
+Resources:
+  Ec2Instance: 
+    Type: AWS::EC2::Instance
+    Properties:
+      AvailabilityZone: us-west-2a
+      ImageId: ami-0d608465670dfa77b
+      InstanceType: t2.micro
+    Metadata:
+      'AWS::ClouFormation::Init':
+        config:
+          files:
+            /temp/test.txt:
+               content: Hello World!
+               mode: '000755'
+               owner: root
+               group: root
+
+

@@ -1,0 +1,37 @@
+List of services that generate logs in AWS
+
+1- VPC Flow logs (Stored in CloudWatch)
+2- CloudTrail Logs (Stored in S3)
+3- Web application logs coming from EC2 instances or on prem servers (Stored in Cloudwatch)
+4- AWS Service Logs (e.g. AWS Security Hub: Stored logs in S3)
+5- DNS Logs
+6- IOT devices
+
+List of services that collect logs in AWS
+
+1- CloudWatch logs
+2- FluentD
+3- S3 buckets
+
+
+List of Log analysis services in AWS
+
+1- Guard Duty: Analyzes logs from Cloud Trail, VPC flow logs, DNS, S3 data events
+2- ES (Elastic Search): Logs can be directed to this service
+3- Splunk: Data Firehose can be used to stream data to splunk
+4- Amazon Kinesis Data Analytics
+5- Lambda
+6- Log analysis apps on EC2
+7- Datadog
+8- Dynatrace
+9- Logic Monitor
+10- MongoDB Cloud
+11- New Relic
+12- Sumo Logic
+
+
+Note: If you want to direct logs to ES or Splunk you have to use Kineses Data Firehose
+
+
+
+

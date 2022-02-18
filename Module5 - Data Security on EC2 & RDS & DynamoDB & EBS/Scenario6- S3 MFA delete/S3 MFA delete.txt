@@ -1,0 +1,17 @@
+S3 MFA delete
+
+S3 MFA delete connot be enabled through the management console. We have to use a command
+to enable it.
+
+1- list buckets using the cli
+*	aws s3api list-buckets --query Buckets[*].Name
+
+2- Check if bucket has versioning enabled
+*	aws s3api get-bucket-versioning --bucket <bucket name>
+
+3- Enable MFA delete on the bucket
+*	aws s3api put-bucket-versioning --bucket <bucket name> --versioning-configuration '{"MFADelete":"Enabled","Status":"Enabled"}' --mfa 'arn:aws:iam::<Account ID>:mfa/root-account-mfa-device <passcode>'
+
+4- Confirm it has been enabled
+*	aws s3api get-bucket-versioning –-bucket <bucket name>
+

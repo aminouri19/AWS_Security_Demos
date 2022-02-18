@@ -1,0 +1,1 @@
+https://docs.aws.amazon.com/vpn/latest/s2svpn/SetUpVPNConnections.html

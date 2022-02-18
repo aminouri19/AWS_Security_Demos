@@ -1,0 +1,19 @@
+Setup and test vpc endpoint
+
+1- Use the BasicVPCandWebServer.yaml file to setup a basic VPC with webserver
+
+2- Connect to the basic webserver to confirm that the webserver is functional
+
+3- Open the VPC dashboard
+
+4- Select the new subnet that has been created (10.0.0.0/24 IP CIDR)
+
+5- In the "Network ACL" tab click on the link to take you to Network ACL confiuration page
+
+6- Select the ACL and under inbound rules click "Edit Inbound Rules"
+
+7- Click add new rule
+
+8- Specify 99 for rule number, Select http for protocol type and select deny in the last box
+
+9- Now test connecting to the website and it should block access.

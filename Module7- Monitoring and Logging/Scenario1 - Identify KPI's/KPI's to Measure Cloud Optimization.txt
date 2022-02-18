@@ -1,0 +1,12 @@
+KPI's to Measure Cloud Optimization
+
+1- Percentage of infrastructure running ‘on-demand’ (vs. covered by Reservation, Savings Plan, Committed Use Discount, etc.) (%)
+2- Rightsizing savings (%)
+3- Effective cost per resource (i.e., $/compute hour) ($)
+4- Production incidents by application/team (n)
+5- Reverted deploys (%)
+6- Mean time to repair or mean time between failures (time)
+7- Number of security lapses (open ports, IAM failures, etc.) (n)
+8- Number of assets that don’t meet configuration standards (wrong VM type, location, image, OS, tagging) (n)
+
+Ref: https://www.cloudhealthtech.com/blog/cloud-kpis-you-need-measure-success

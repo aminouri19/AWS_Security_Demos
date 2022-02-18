@@ -1,0 +1,12 @@
+KPIs to Measure Cloud Governance and Automation
+
+1- Percent of policies in compliant state (%)
+2- Cost optimized over time ($)
+3- Cost optimized per policy over time ($)
+4- Time saved as a result of policies (time)
+5- Number of reservations automated (n)
+6- Time to remediate security violations (time)
+7- Service availability (%)
+8- Time to deployment (time)
+
+ref: https://www.cloudhealthtech.com/blog/cloud-kpis-you-need-measure-success

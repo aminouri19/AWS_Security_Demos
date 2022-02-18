@@ -1,0 +1,17 @@
+Encrypt using KMS Keys and Openssl
+
+1- Open Aws KMS
+2- Create a symetric CMK
+3- Create a DEK (Data Encryption Key) from the CMK
+*	aws kms generate-data-key --key-id alias/<keyname> --key-spec AES_256 --region us-west-2 > Key-output.txt
+4- This will save the output in the file. The file contains a plaintext and encrypted data key
+5- Copy the plaintext data key value (that is base 64), decode and save it to a file called dek.txt
+*	echo <Plain text key value> | base64 --decode > dek.txt
+6- Decode the encrypted version as well
+*	echo <encrypted key value> | base64 --decode > enc-dek.txt
+7- Create a text file
+*	echo Password:P@ssw0rd > password-file.txt
+8- Encrypt using openssl
+*	openssl enc -in ./password-file.txt -out ./enc-password-file.txt -e -aes256 -k fileb://./dek.txt
+9- Delete the data key and unencrypted password file
+*	rm dek.txt password-file.txt

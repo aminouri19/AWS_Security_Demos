@@ -1,0 +1,24 @@
+SSE-C Demo
+
+1- Connect to your EC2 instance
+
+2- Create a text file
+*	echo "hi" > text.txt
+
+3- Create encryption keys using openssl command
+*	openssl enc -aes128 -k secret -P
+
+4- Copy and paste your keys inside a file
+
+5- Copy the text.txt to an S3 bucket and encrypt it while uploading
+*	aws s3 cp text.txt s3://testbucket --sse-c --sse-c-key <Key Value from Step 4>
+
+6-Open S3 bucket and refresh. Try to open file an you'll see an error message.
+
+7- Delete file localy
+*	rm text.txt
+
+8- download file from S3 bucket and decrypt
+*	aws s3 cp s3://testbucket/text.txt . --sse-c --sse-c-key <Key Value from Step 4>
+
+Ref: chrome-extension://mmeijimgabbpbgpdklnllpncmdofkcpn/app.html#/files/b0aebebf-9bad-43eb-ya6f-fe097d2e0c50

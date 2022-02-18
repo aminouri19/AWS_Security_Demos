@@ -1,0 +1,9 @@
+Security Group ICMP Allow
+
+1- Add a second instance to the new VPC that was created.
+
+2- Open security group settings and allow ICMP
+
+3- Open the security group setting for the first instance and allow ICMP
+
+4- Ping between both instances

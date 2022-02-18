@@ -1,0 +1,28 @@
+Prevent Tampering by using hashing
+
+Windows Commands
+
+Step1: Calculate the hash of the file
+*	Certutil -hashfile <file name> md5
+
+Step2: Make change in the file or tamper
+*	echo "1" > <file name>
+
+Step3: Calculate the hash again
+*	Certutil -hashfile <file name> md5
+
+
+Linux Commands
+
+Step1: Calculate the hash of the file
+*	md5sum <file name> 
+
+Step2: Make change in the file or tamper
+*	echo "1" > <file name>
+
+Step3: Calculate the hash again
+*	md5sum <filename>
+
+
+This shows that the hash value has changed
+indicating the file has been tampered with.

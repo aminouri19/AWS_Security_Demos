@@ -1,0 +1,11 @@
+Decrypt using KMS
+
+1- In the directory that encrypted data key is stored, run the following command
+*	aws kms decrypt --ciphertext-blob fileb://./enc-dek.txt --region us-west-2 
+2- Copy the plaintext key and decode from base64
+*	echo <Plain text key> | base64 --decode > dek.txt
+3- Use the Openssl command to decrypt the password file
+*	openssl enc -in ./enc-password-file.txt -out ./password-file.txt -d -aes256 -k fileb://./dek.txt
+4- Verify the decrypted file is avilable
+*	ls *pass*
+5- cat password-file.txt

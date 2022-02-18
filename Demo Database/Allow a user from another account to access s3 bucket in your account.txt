@@ -1,0 +1,2 @@
+1- S3 bucket policy should allow the remote user to access
+2- Remote user needs an IAM policy in his account to allow access

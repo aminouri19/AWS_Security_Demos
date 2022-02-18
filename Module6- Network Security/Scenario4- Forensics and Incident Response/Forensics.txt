@@ -1,0 +1,7 @@
+Forensics
+
+In the event of a security incident, we have to
+
+1- Detect when the attack happened
+2- How systems were breached
+3- Which resources were compromised

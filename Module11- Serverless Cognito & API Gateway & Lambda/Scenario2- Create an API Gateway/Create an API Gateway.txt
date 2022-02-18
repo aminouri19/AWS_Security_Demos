@@ -1,0 +1,16 @@
+Craete an APi gateway for the lambda function
+
+1- Open API Gateway
+2- Click Create API
+3- Click "Build" under Rest API
+4- Give the API a name and click create API
+5- Click the Actions button and click "Create Method"
+6- Select "Get" and click the check mark
+7- On the right pane select "Lambda Function"
+8- In the bottom start typing the name of your lambda function and hit save
+9- Click OK
+10- in the "GET - Method Execution" page click test and then click test again
+11- You should see the out put of the lambda function appear
+12- Select "Get" from the menu and click "Deploy API", under the Action button
+13- In front of deployment stage, click new stage and name it Test
+14- In front of "Invoke URL", we can see the url that invokes the lambda function

@@ -1,0 +1,88 @@
+			Assuming a role using the CLI
+
+
+1- Create a new user with no permission
+
+2- Use the following commands to create a profile for this user on your ec2 instance
+*	aws configure --profile Tina
+*	export AWS_DEFAULT_PROFILE=Tina
+*	aws sts get-caller-identity
+
+3- Run the the following commands and it will give you access denied
+*	Powershell: Get-S3Bucket
+*	CMD: aws s3 ls 	
+
+This first command will only we successful if we have a role attached the 
+instance or we have our keys added locally to the machine and our user has S3 access.
+
+4- Create a policy that has S3 list access to  your s3 bucket called "report-am-5"
+
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": "s3:ListBucket",
+            "Resource": "arn:aws:s3:::report-am-5"
+        }
+    ]
+}
+
+5- Create an EC2 role that uses the policy above.
+
+6- Edit the trust relationship, remove ec2 and add Tina to the list. This allows only Tina to assume this role.
+
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Principal": {
+        "AWS": "arn:aws:iam::511349353831:user/Tina"
+      },
+      "Action": "sts:AssumeRole"
+    }
+  ]
+}
+
+7- Go to the EC2 terminal and run the following command to assume the role and receive temporary crdentials from sts.
+
+*	aws sts assume-role --role-arn <place role arn here> --role-session-name "new-session"
+
+Temporary Access key, Secret Access Key and Session Key will be visible on the screen.
+
+8- Copy the tempoarary credentials and update the environment variables
+*	export AWS_ACCESS_KEY_ID=<paste value here>
+*	export AWS_SECRET_ACCESS_KEY=<paste value here>
+*	export AWS_SESSION_TOKEN=<paste value here>
+
+9- Run the following command to see if the temporary credentials work
+*	aws s3 ls report-am-5
+
+10- View the temporary sts creds used to run the command
+*	aws sts get-caller-identity
+
+11- To stop using these credentials use the following command
+*	unset AWS_ACCESS_KEY_ID AWS_SECRET_ACCESS_KEY AWS_SESSION_TOKEN
+
+
+Limit session access using session policies
+If we want to further limit access to the temporary sts session, we can create a session policy
+and save it on our ec2 instance. For example the following session policy only allows list access
+to a folder called report-am-5
+
+{
+  "Version": "2012-10-17",
+  "Statement": [
+      {
+          "Effect": "Allow",
+          "Action": "s3:ListBucket",
+          "Resource": "arn:aws:s3:::report-am-5"
+      }
+  ]
+}
+
+Copy and paste this policy into a file called policy.json. Apply this restriction when assuming the role
+
+1- Use the following command to assume a role. Although the role allows s3 full access, but the session policy will limit access.
+*	aws sts assume-role --role-arn arn:aws:iam::511349353831:role/S3FullAcess --role-session-name "s3-session" --policy file://policy.json

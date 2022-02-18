@@ -1,0 +1,5 @@
+chrome-extension://mmeijimgabbpbgpdklnllpncmdofkcpn/app.html#/files/3c3e5221-8364-4f1a-y9e5-82f5f07cd7a5
+
+1- Create Key in KMS
+
+2- Upload a file and use sse-kms to encrypt

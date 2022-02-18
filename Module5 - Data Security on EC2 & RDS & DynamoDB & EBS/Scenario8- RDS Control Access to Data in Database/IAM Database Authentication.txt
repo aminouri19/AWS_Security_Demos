@@ -1,0 +1,67 @@
+IAM Datbase Authentication
+
+When creating the RDS database, under "database authentication", select 
+"password and IAM database Authentication", this will allow Authentication
+using IAM users. This is also required if we want to allow an EC2 instance to access
+the RDS database using an IAM role. If changing this option for an existing db, choose apply
+immediately.
+
+1- Create a role for EC2 and allow access to RDS. This requires a specific policy that must be used below.
+In the resource section we can see that the IAM user is added at the end of the db arn.
+Note: Admin users can connect to the instance with no problem. This example is allowing a non admin user to connect.
+If you see an error message during policy creation just ignore.
+
+Arn under resource should be populated as follows
+"arn:aws:rds-db:<region>:<Account ID>:dbuser:<DbiResourceID>/<db user name>"
+
+To find the dbiResourceID, use the following command:
+*	aws rds describe-db-instances --query "DBInstances[*].[DBInstanceIdentifier,DbiResourceId]"
+
+Use the following command to find every detail about your database
+*	aws rds describe-db-instances --region us-west-2
+                    
+
+{
+   "Version": "2012-10-17",
+   "Statement": [
+      {
+         "Effect": "Allow",
+         "Action": [
+             "rds-db:connect"
+         ],
+         "Resource": [
+             "arn:aws:rds-db:us-east-2:1234567890:dbuser:db-ABCDEFGHIJKL01234/db_user"
+         ]
+      }
+   ]
+}
+            
+ref: https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.IAMDBAuth.IAMPolicy.html
+
+2- Attach role to EC2 instance
+
+3- ssh into the instance and connect to the database using the following command
+*	mysql -h <host or database endpoint> -P 3306 -u <master db username> -p
+
+4- While in the mysql> prompt, create a user in mysql and specify that the user will use IAM for authentication
+*	CREATE USER <username> IDENTIFIED WITH AWSAuthenticationPlugin as 'RDS';
+
+5- Exit the mysql> prompt and run the following command on EC2 to create an RDS db authetication token (This will generate a temporary tocken that will expire in 15 minutes and will be used as the password)
+*	aws rds generate-db-auth-token --hostname <database endpoint> --port 3306 --username <IAM username>
+
+6- Copy the token from the terminal and save in a file
+
+7- RDS database creates a SSL certificate when the datbase is created, if we enable "SSL Certificate Verification",
+   the ssl certificate will be created using the database name. Download the root CA (rds-ca-2019), using the following command.
+*	wget https://s3.amazonaws.com/rds-downloads/rds-combined-ca-bundle.pem
+*	mysql -h <database endpoint> --ssl-ca rds-combined-ca-bundle.pem  --ssl-mode=VERIFY_IDENTITY -u <username> -p
+
+8- Open mysql workbench and connect to the db instance using ssl
+
+9- Run the following commands
+*	RDSHOST="<rds endpoint>"
+*	TOKEN="$(aws rds generate-db-authentication-token --hostname $RDSHOST --port 3306 --region us-west-2 --username <username>)"
+*	mysql --host=$RDSHOST --port=3306 --ssl-ca=<ca cert> --enable-cleartext-plugin --user=<username> --password=$TOKEN
+
+
+ref: https://youtu.be/o4Sf5Z6E2lk

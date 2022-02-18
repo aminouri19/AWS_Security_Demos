@@ -1,0 +1,12 @@
+Create HSM Cluster
+
+1- Create a HSM Cluster
+*	Create cluster in two AZ's
+2- Initialize the cluster
+*	Select cluster and under actions select initialize
+3- Add a HSM to the cluster
+*	Select the first AZ to setup the HSM and click create
+4- Create an IAM user with permission to initialize the cluster
+*	Select policy named "AWSCloudHSMFullAccess"
+
+Ref: https://www.youtube.com/watch?v=Y6agOjSWAKU

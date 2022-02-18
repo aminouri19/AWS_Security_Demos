@@ -1,0 +1,8 @@
+open aws console
+right click on the page and select inspect
+click on the network tab and view all packets 
+open ec2 console to view list of instances
+select packet header and view json 
+open cmd and run the following command
+aws ec2 describe-instances
+view the same json output

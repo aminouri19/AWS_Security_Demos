@@ -1,0 +1,20 @@
+Create a bucket
+aws s3 mb s3://report-am-1 --region us-west-2
+
+Upload file to bucket
+aws s3 cp test.txt s3://report-am-1
+
+Download a file from s3
+aws s3 cp s3://report-am-1/test.txt
+
+Delete bucket
+aws s3 rb s3://report-am-1
+
+Delete files inside the bucket recursivley
+aws s3 rm --recursive s3://report-am-1
+
+Delete bucket with force without recursive content deletion
+aws s3 rb --force s3://report-am-1
+
+Note: If the bucket has versioning enabled, we can't delete it using the cmd. 
+We need to right code using python or javascript.
