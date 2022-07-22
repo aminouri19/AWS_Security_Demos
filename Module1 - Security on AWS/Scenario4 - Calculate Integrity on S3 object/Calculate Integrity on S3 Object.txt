@@ -1,0 +1,16 @@
+				Calculate Integrity on S3 Object
+
+Calculate object hash on windows
+
+1- Open Powershell
+2- Run the following command on your file to calculate the sha256 hash
+*	get-filehash test.txt -algorithm sha256
+3- Convert hash to base64 using the following commands
+*	$hashString = '5891B5B522D5DF086D0FF0B110FBD9D21BB4FC7163AF34D08286A2E846F6BE03'
+*	$hashByteArray = [byte[]] ($hashString -replace '..', '0x$&,' -split ',' -ne '')
+*	$ContentSHA256 = [System.Convert]::ToBase64String($hashByteArray)
+*	echo $ContentSHA256
+4- Open S3 and click upload file.
+5- In the bottom click properties
+6- In the additional Checksum settings click "on" and select sha256
+7- Paste the base64 version of the checksum in the "pre-calculated value" box to verify the checksum when uploading.

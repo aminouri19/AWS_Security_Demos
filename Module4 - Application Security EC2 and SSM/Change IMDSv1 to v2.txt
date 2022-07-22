@@ -1,0 +1,11 @@
+				Change IMDSv1 to v2
+
+
+1- Check current status of Instance metadata
+*	aws ec2 describe-instances --instance-ids <enter-your-instanced-id>
+
+Under metadata options ---> Httptokens ---> optional
+optional means it's optional v1 or v2
+
+2- Change to v2 running the following command
+*	aws ec2 modify-instance-metadata-options --instance-id <enter-your-instanced-id> --http-tokens required --http-endpoint enabled --http-put-response-hop-limit 1

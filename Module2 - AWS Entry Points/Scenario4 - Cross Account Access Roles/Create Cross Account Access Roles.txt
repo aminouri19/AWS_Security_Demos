@@ -30,7 +30,8 @@ account that contains the users
 (trusted account).
 To do this, the administrator of the trusting 
 account specifies the trusted account number
-as the Principal in the role's trust policy. That allows potentially any user in the trusted account to assume the role.
+as the Principal in the role's trust policy. 
+That allows potentially any user in the trusted account to assume the role.
 To complete the configuration, the administrator
 of the trusted account must give specific 
 groups or users in that account permission 
@@ -59,7 +60,8 @@ root user.
 
 Step2: Allow Users in Destination Account, Access to Resources in Source Account
 
-1- The administrator of the trusted account creates a new policy that allows it's users to assume and switch to a role. Replace Account ID and Role in the following
+1- The administrator of the trusted account creates a new policy (JSON below) that allows it's
+users to assume and switch to a role. Replace Account ID and Role in the following
 
 {
   "Version": "2012-10-17",

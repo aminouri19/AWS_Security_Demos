@@ -1,0 +1,7 @@
+				Session Policies
+
+
+Use the following command to assume a role called "AppDev" but limit access based on the "DevCalifornia" role.
+*	aws sts assume-role --role-arn “arn:aws:iam::444455556666:role/AppDev” --role-session-name “teamCalifornia-session” --policy-arns arn=”arn:aws:iam::444455556666:policy/DevCalifornia”
+
+Ref: https://aws.amazon.com/blogs/security/create-fine-grained-session-permissions-using-iam-managed-policies/

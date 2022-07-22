@@ -8,7 +8,7 @@ Setup and test vpc endpoint
 
 4- Select the new subnet that has been created (10.0.0.0/24 IP CIDR)
 
-5- In the "Network ACL" tab click on the link to take you to Network ACL confiuration page
+5- In the "Network ACL" tab click on the link to take you to Network ACL configuration page
 
 6- Select the ACL and under inbound rules click "Edit Inbound Rules"
 
